@@ -1,2 +1,2 @@
 # lecture-ai-engineering
-fork from https://github.com/matsuolab/lecture-ai-engineering/
+AIエンジニアリング実践講座（公開用リポジトリ）
