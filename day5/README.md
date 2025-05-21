@@ -82,7 +82,7 @@ GitHubを「Google Colab」上で使用できるようにするのに加え、da
 cd 演習1
 
 python main.py
-mlflow ui
+poetry run mlflow ui -p 5400
 
 python pipeline.py
 ```
@@ -108,9 +108,9 @@ python pipeline.py
 cd 演習2
 
 python main.py
-pytest main.py
+poetry run pytest main.py
 
-black main.py
+poetry run black main.py
 ```
 
 ## 演習3: CI(継続的インテクレーション)
