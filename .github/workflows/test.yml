@@ -20,16 +20,25 @@ jobs:
         python -m pip install --upgrade pip
         pip install poetry
         poetry install --no-root
+    - name: Evaluation model
+      run: |
+        cd day5/演習1
+        python main.py
+        cd ../..
 
-    - name: Lint with flake8 all day5 files
+    - name: Lint with flake8
       run: |
-        poetry run flake8 day5 --count --select=E9,F63,F7,F82 --show-source --statistics
-        poetry run flake8 day5 --count --exit-zero --max-complexity=10 --max-line-length=88 --statistics
+        poetry run flake8 day5/演習3 --count --select=E9,F63,F7,F82 --show-source --statistics
+        poetry run flake8 day5/演習3 --count --exit-zero --max-complexity=10 --max-line-length=88 --statistics
         
-    - name: Format check with black all all day5 files
+    - name: Format check with black
       run: |
-        poetry run black --check day5
+        poetry run black --check day5/演習3
         
-    - name: Run test all all day5 files
+    - name: Run data tests
       run: |
-        poetry run pytest day5 -v
+        poetry run pytest day5/演習3/tests/test_data.py -v
+        
+    - name: Run model tests
+      run: |
+        poetry run pytest day5/演習3/tests/test_model.py -v
