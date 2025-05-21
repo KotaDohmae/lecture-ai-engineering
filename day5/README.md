@@ -81,10 +81,10 @@ GitHubを「Google Colab」上で使用できるようにするのに加え、da
 ```bash
 cd 演習1
 
-python main.py
+poetry run python main.py
 poetry run mlflow ui -p 5400
 
-python pipeline.py
+poetry run python pipeline.py
 ```
 
 ---
@@ -107,7 +107,7 @@ python pipeline.py
 ```bash
 cd 演習2
 
-python main.py
+poetry run python main.py
 poetry run pytest main.py
 
 poetry run black main.py
