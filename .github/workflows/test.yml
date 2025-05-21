@@ -23,7 +23,7 @@ jobs:
 
     - name: Evaluation model
       run: |
-        cd ./day5/演習1
+        cd ../day5/演習1
         python main.py
         cd ../..
 
