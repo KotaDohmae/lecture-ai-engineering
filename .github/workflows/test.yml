@@ -1,0 +1,45 @@
+name: ML Pipeline CI
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        
+    - name: Install dependencies by Poetry
+      run: |
+        python -m pip install --upgrade pip
+        pip install poetry
+        poetry install --no-root
+
+    - name: Evaluation model
+      run: |
+        cd day5/演習1
+        poetry run python main.py
+        cd ../..
+
+    - name: Lint with flake8
+      run: |
+        poetry run flake8 day5/演習3 --count --select=E9,F63,F7,F82 --show-source --statistics
+        poetry run flake8 day5/演習3 --count --exit-zero --max-complexity=10 --max-line-length=88 --statistics
+        
+    - name: Format check with black
+      run: |
+        poetry run black --check day5/演習3
+        
+    - name: Run data tests
+      run: |
+        poetry run pytest day5/演習3/tests/test_data.py -v
+        
+    - name: Run model tests
+      run: |
+        poetry run pytest day5/演習3/tests/test_model.py -v
