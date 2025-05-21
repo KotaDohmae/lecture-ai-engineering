@@ -23,7 +23,9 @@ jobs:
 
     - name: Evaluation model
       run: |
-        python day5/演習1/main.py
+        cd day5/演習1
+        poetry run python main.py
+        cd ../..
 
     - name: Lint with flake8
       run: |
