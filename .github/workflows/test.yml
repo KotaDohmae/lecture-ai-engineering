@@ -20,11 +20,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install poetry
         poetry install --no-root
-    - name: Cache Poetry
-      run: |
-        python main.py
-        poetry run pytest main.py
-        poetry run black main.py
 
     - name: Lint with flake8 all day5 files
       run: |
